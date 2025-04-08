@@ -54,12 +54,12 @@ public class TodoService {
     }
 
     //Usando query nativa
-    public List<Todo> listNativeQuery() {
+    public List<TodoPropertiesDTO> listNativeQuery() {
         List<Todo> data = todoRepository.findByNome("alisson");
         List<TodoPropertiesDTO> tpdto  = data.stream().map(TodoMapper::toDTO).toList();
         tpdto.forEach(todo -> System.out.println(todo.nome()));
 
-        return data;
+        return tpdto;
     }
 
 }

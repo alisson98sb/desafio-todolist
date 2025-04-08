@@ -1,5 +1,6 @@
 package com.example.desafio_todolist.controller;
 
+import com.example.desafio_todolist.dto.TodoPropertiesDTO;
 import com.example.desafio_todolist.entity.Todo;
 import com.example.desafio_todolist.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class TodoController {
     }
 
     @GetMapping("/native")
-    List<Todo> listByName(){return todoService.listNativeQuery(); }
+    List<TodoPropertiesDTO> listByName(){return todoService.listNativeQuery(); }
 
     @PostMapping
     ResponseEntity<List<Todo>> create(@RequestBody Todo todo) {
