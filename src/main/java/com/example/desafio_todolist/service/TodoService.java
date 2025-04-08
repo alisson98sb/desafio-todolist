@@ -50,4 +50,10 @@ public class TodoService {
 
         return list();
     }
+
+    //Usando query nativa
+    public List<Todo> listNativeQuery() {
+        return todoRepository.findByNome("alisson");
+    }
+
 }

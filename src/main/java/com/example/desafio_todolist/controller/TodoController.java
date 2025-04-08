@@ -21,6 +21,9 @@ public class TodoController {
         return todoService.list();
     }
 
+    @GetMapping("/native")
+    List<Todo> listByName(){return todoService.listNativeQuery(); }
+
     @PostMapping
     ResponseEntity<List<Todo>> create(@RequestBody Todo todo) {
         return ResponseEntity.status(HttpStatus.CREATED)
