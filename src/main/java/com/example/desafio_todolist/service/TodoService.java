@@ -1,6 +1,8 @@
 package com.example.desafio_todolist.service;
 
+import com.example.desafio_todolist.dto.TodoPropertiesDTO;
 import com.example.desafio_todolist.entity.Todo;
+import com.example.desafio_todolist.mappers.TodoMapper;
 import com.example.desafio_todolist.repository.TodoRepository;
 import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
@@ -53,7 +55,11 @@ public class TodoService {
 
     //Usando query nativa
     public List<Todo> listNativeQuery() {
-        return todoRepository.findByNome("alisson");
+        List<Todo> data = todoRepository.findByNome("alisson");
+        List<TodoPropertiesDTO> tpdto  = data.stream().map(TodoMapper::toDTO).toList();
+        tpdto.forEach(todo -> System.out.println(todo.nome()));
+
+        return data;
     }
 
 }
